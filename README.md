@@ -3,7 +3,7 @@
 ## Objective
 Create a page that displays a grid of popular movies as demonstrated in the mock below:
 
-![Link  to animated gif demonstrating interaction](https://d13yacurqjgara.cloudfront.net/users/347174/screenshots/2625769/04-hover-cards.gif)
+<img src="/static/mockup.gif?raw=true" width="200px">
 
  ## Requirements
 1. Display a grid of posters for popular movies
