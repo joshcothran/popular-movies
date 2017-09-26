@@ -3,7 +3,7 @@
 ## Objective
 Create a page that displays a grid of popular movies as demonstrated in the mock below:
 
-<img src="/static/mockup.gif?raw=true" width="200px">
+<img src="/static/mockup.gif?raw=true" width="400px">
 
  ## Requirements
 1. Display a grid of posters for popular movies
