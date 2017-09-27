@@ -15,9 +15,9 @@ class App extends Component {
     const { isLoading, page, totalPages, movies } = this.props.moviesStore;
 
     return (
-      <div className="App">
+      <div className="App container">
         <div className="App-header">
-          <h1>Popular Movies</h1>
+          <h1 className="App-h1">POPULAR MOVIES</h1>
         </div>
         <p>
           isLoading: {isLoading.toString()}
