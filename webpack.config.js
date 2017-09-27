@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 // const webpack = require('webpack');
 
+const CopyWebPackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -59,9 +60,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              babelrc: false,
-              presets: ['es2015', 'react', 'stage-0'],
-              compact: false,
+              babelrc: true
             }
           }
         ]
@@ -110,6 +109,9 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: 'static/css/[name].[contenthash:8].css',
-    })
+    }),
+    new CopyWebPackPlugin([
+      { from: 'public/favicon.ico', to: 'favicon.ico'}
+    ])
   ]
 };
