@@ -2,14 +2,19 @@
   width: 320px;
   height: 180px;
   display: inline-block;
-  margin: 0;
-  padding: 0;
 }
 
 .Card-inner {
   position: relative;
-  margin: 0;
-  padding: 0;
+}
+
+.Card-inner-image {
+  width: 320px;
+  height: 180px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .Card-title {
@@ -21,6 +26,24 @@
   size: 1.2em;
 }
 
+.Card-title-loading {
+  display: none
+}
+
+.Card-title-loaded {
+  display: default;
+  z-index: 1;
+}
+
 .Card-img {
   display: block;
+}
+
+.Card-image-loading {
+  transform: scale(0.1, 0.1);
+}
+
+.Card-image-loaded {
+  transition: all 500ms ease-out;
+  transform: scale(1, 1);
 }

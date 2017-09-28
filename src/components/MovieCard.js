@@ -7,24 +7,21 @@ class MovieCard extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      imageStatus: 'loading'
-    };
   }
 
   onImageLoad(e) {
-    this.setState({ imageStatus: 'loaded' });
+    if (this.refs.cardImg !== null) {
+      this.refs.cardImg.className = 'Card-image Card-image-loaded';
+    }
+    if (this.refs.cardTitle !== null) {
+      setTimeout(() => {
+        this.refs.cardTitle.className = 'Card-title Card-title-loaded';
+      }, 500);
+    }
   }
 
   onImageError(e) {
-    this.setState({ imageStatus: 'failed' });
-  }
-
-  componentWillMount() {
-    // this.props.moviesStore.loadMovies();
-  }
-
-  componentDidMount() {
+    console.error('Image load failed');
   }
 
   render() {
@@ -34,16 +31,23 @@ class MovieCard extends Component {
     return (
       <div className="Card">
         <div className="Card-inner">
-          <div className="Card-title">{title}</div>
-          <img
-            id={id}
-            className="Card-img"
-            src={imageSrc}
-            alt={title}
-            width="320"
-            height="180"
-            onLoad={this.onImageLoad.bind(this)}
-            onError={this.onImageError.bind(this)}/>
+          <div
+            ref="cardTitle"
+            className="Card-title Card-title-loading">
+            {title}
+          </div>
+          <div className="Card-inner-image">
+            <img
+              ref="cardImg"
+              id={id}
+              className="Card-img Card-image-loading"
+              src={imageSrc}
+              alt={title}
+              width="320"
+              height="180"
+              onLoad={this.onImageLoad.bind(this)}
+              onError={this.onImageError.bind(this)} />
+          </div>
         </div>
       </div>
     );
