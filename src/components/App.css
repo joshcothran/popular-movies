@@ -19,7 +19,6 @@
 /* App-content */
 .App-content {
   flex: 1 1 auto;
-  background-color: white;
   overflow: auto;
 }
 

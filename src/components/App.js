@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
+import InfiniteScroll from 'react-infinite-scroller';
 import MovieCard from './MovieCard';
 
 import './App.css';
@@ -8,12 +9,15 @@ import './App.css';
 @inject('moviesStore')
 @observer
 class App extends Component {
-  componentWillMount() {
-    this.props.moviesStore.loadMovies();
-  }
-
   render() {
-    const { isLoading, page, totalPages, movies } = this.props.moviesStore;
+    const {
+      isLoading,
+      page,
+      totalPages,
+      movies,
+      loadMovies,
+      hasMore
+    } = this.props.moviesStore;
 
     return (
       <div className="App container">
@@ -21,13 +25,21 @@ class App extends Component {
           <h1 className="App-h1">POPULAR MOVIES</h1>
         </div>
         <div className="App-content">
-          {movies.map((movie) => {
-            return (
-              <MovieCard
-                key={movie.id}
-                movie={movie} />
-            );
-          })}
+          <InfiniteScroll
+            pageStart={page}
+            loadMore={loadMovies}
+            hasMore={hasMore}
+            loader={<div className="loader">Loading ...</div>}
+            useWindow={false}
+          >
+            {movies.map((movie) => {
+              return (
+                <MovieCard
+                  key={movie.id}
+                  movie={movie} />
+              );
+            })}
+          </InfiniteScroll>
         </div>
         <div className="App-footer">
           Powered by <a href="https://www.themoviedb.org/" target="_blank">The Movie DB</a>
