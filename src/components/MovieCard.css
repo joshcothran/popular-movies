@@ -8,6 +8,18 @@
   position: relative;
 }
 
+.Card-inner-over {
+  transition: all 200ms ease-out;
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.Card-inner-out {
+  transition: all 200ms ease-out;
+  transform: scale(1);
+  z-index: 0;
+}
+
 .Card-inner-image {
   width: 320px;
   height: 180px;
@@ -45,5 +57,10 @@
 
 .Card-image-loaded {
   transition: all 500ms ease-out;
-  transform: scale(1, 1);
+  transform: scale(1);
+}
+
+.Card-image-mouseout {
+  transition: all 200ms ease-out;
+  transform: scale(1);
 }

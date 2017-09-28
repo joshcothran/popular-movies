@@ -9,7 +9,26 @@ class MovieCard extends Component {
     super(props);
   }
 
-  onImageLoad(e) {
+  componentDidMount() {
+    this.setState({
+      imageLoaded: false
+    });
+  }
+
+  onCardOver() {
+    if (this.refs.cardInner !== null && this.state.imageLoaded) {
+      this.refs.cardInner.className = 'Card-inner Card-inner-over';
+    }
+  }
+
+  onCardOut() {
+    if (this.refs.cardInner !== null && this.state.imageLoaded) {
+      this.refs.cardInner.className = 'Card-inner Card-inner-out';
+    }
+  }
+
+  onImageLoad() {
+    this.state.imageLoaded = true;
     if (this.refs.cardImg !== null) {
       this.refs.cardImg.className = 'Card-image Card-image-loaded';
     }
@@ -20,7 +39,7 @@ class MovieCard extends Component {
     }
   }
 
-  onImageError(e) {
+  onImageError() {
     console.error('Image load failed');
   }
 
@@ -30,7 +49,11 @@ class MovieCard extends Component {
 
     return (
       <div className="Card">
-        <div className="Card-inner">
+        <div
+          ref="cardInner"
+          className="Card-inner"
+          onMouseOver={this.onCardOver.bind(this)}
+          onMouseOut={this.onCardOut.bind(this)}>
           <div
             ref="cardTitle"
             className="Card-title Card-title-loading">
@@ -46,7 +69,8 @@ class MovieCard extends Component {
               width="320"
               height="180"
               onLoad={this.onImageLoad.bind(this)}
-              onError={this.onImageError.bind(this)} />
+              onError={this.onImageError.bind(this)}
+            />
           </div>
         </div>
       </div>
