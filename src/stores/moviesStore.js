@@ -31,7 +31,7 @@ export class MoviesStore {
             const totalPages = json.total_pages;
             const movies = json.results.map((movie) => {
               return {
-                id: movie.id,
+                id: `_${movie.id}`,
                 title: movie.title,
                 img: movie.backdrop_path
               };

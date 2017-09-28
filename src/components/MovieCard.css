@@ -1,0 +1,26 @@
+.Card {
+  width: 320px;
+  height: 180px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.Card-inner {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.Card-title {
+  position: absolute;
+  color: white;
+  max-width: 300px;
+  top: 10px;
+  left: 10px;
+  size: 1.2em;
+}
+
+.Card-img {
+  display: block;
+}
